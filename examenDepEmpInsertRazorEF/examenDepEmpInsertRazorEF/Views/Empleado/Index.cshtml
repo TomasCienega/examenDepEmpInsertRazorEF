@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Lista Empleados";
+}
+@{
+    // Aquí le decimos explícitamente qué es el ViewBag
+    var misDepartamentos = ViewBag.ListaDeptos as IEnumerable<examenDepEmpInsertRazorEF.Models.Departamento>;
+}
+@model ICollection<examenDepEmpInsertRazorEF.Models.Empleado>
+
+<div class="container">
+    <a asp-action="CrearEmpleado" class="btn btn-success mb-3">Registrar Nuevo Empleado</a>
+    <div class="mb-3">
+        <form method="get">
+            <select name="id">
+                <option value="0">-- Todos los departamentos --</option>
+                @* Y en el select lo proteges con un if *@
+                @if (misDepartamentos != null)
+                {
+                    @foreach (var deps in misDepartamentos)
+                    {
+                        // 1. Creamos una variable booleana para la condición
+                        bool esSeleccionado = (deps.IdDepartamento == (int?)ViewBag.IdSeleccionado);
+
+                        // 2. Usamos esa variable dentro de la etiqueta
+                        <option value="@deps.IdDepartamento" selected="@esSeleccionado">
+                            @deps.NombreDepartamento
+                        </option>
+                    }
+                }
+            </select>
+            <button type="submit"> Filtrar </button>
+            <a asp-action="Index" class="btn btn-secondary">Limpiar Filtro</a>
+        </form>
+    </div>
+    <div class="">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre Completo</th>
+                    <th>Departamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(Model != null && Model.Any()){
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.IdEmpleado</td>
+                        <td>@data.NombreEmpleado</td>
+                        <td>@data.IdDepartamentoNavigation.NombreDepartamento</td>
+                    </tr>
+                }
+                }else{
+                <p>No hay empleados para mostrar.</p>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
