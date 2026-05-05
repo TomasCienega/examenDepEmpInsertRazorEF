@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("examenDepEmpInsertRazorEF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96d76b6e74a51daec91e9a30e03a231161fe1db2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23921d9e6eaf6d18652a0902eeaea6b48690231f")]
 [assembly: System.Reflection.AssemblyProductAttribute("examenDepEmpInsertRazorEF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("examenDepEmpInsertRazorEF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
